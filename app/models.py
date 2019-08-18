@@ -12,7 +12,7 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(100))
     email = db.Column(db.String(100),unique = True,index = True)
-    id_no = db.Column(db.Integer(8),unique = True,index = True)
+    # id_no = db.Column(db.Integer(8),unique = True,index = True)
     password_hash = db.Column(db.String(100))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column()
@@ -24,7 +24,7 @@ class User(UserMixin,db.Model):
     def password(self, password):
         raise AttributeError('You cannot read the password attribute')
 
-    @pasword.setter
+    @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
 
@@ -40,7 +40,7 @@ class Child(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(100))
-    DoB = db.Column(db.integer())
+    DoB = db.Column(db.Integer())
     
     # vaccine = db.relationship('vaccine', backref = 'child',lazy = 'dynamic')
 
